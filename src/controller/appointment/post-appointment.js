@@ -26,7 +26,7 @@ const postAppointment = async(req, res) => {
     }
 
     try {
-        
+
         let query = {'mobile_no': reqBody.mobile_no_patient,'pin_code': reqBody.pin_code} 
         
         const findData = await Patient.find( query, null );
@@ -40,7 +40,7 @@ const postAppointment = async(req, res) => {
         const appointmentData = Appointment({
             doctor_id: reqBody.doctor_id,
             patient_id: findData[0]["patient_id"],
-            date: reqBody.date,
+            date: new Date(reqBody.date),
             start_time: reqBody.start_time,
             end_time: reqBody.end_time,
             slot_id: reqBody.slot_id

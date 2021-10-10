@@ -1,5 +1,4 @@
 const Appointment = require('../../data-access/models/appointments');
-const Doctors = require('../../data-access/models/doctors');
 const FreeSlot = require('../../data-access/models/free-slot');
 
 const deleteAppointment = async(req, res) => {
@@ -30,7 +29,6 @@ const deleteAppointment = async(req, res) => {
         }
 
         const deleteData = await Appointment.deleteOne(query);
-        console.log('deleteData: ', deleteData);
         if ( deleteData && deleteData.deletedCount == 0){
             responseClient.message = 'Fail';
             responseClient.error = 'data not found';

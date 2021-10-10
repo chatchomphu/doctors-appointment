@@ -19,14 +19,14 @@ module.exports.pad = (str, max)  => {
     return str.length < max ? this.pad("0" + str, max) : str;
 }
 
-module.exports.calculate_time_slot = (start_time, end_time, interval) => {
+module.exports.calculateTimeSlot = (startTime, endTime, interval) => {
     var i, formatted_time;
-    var time_slots = new Array();
-    for(var i=start_time; i<=end_time; i = i+interval){
+    var timeSlots = new Array();
+    for(var i=startTime; i<=endTime; i = i+interval){
         formatted_time = this.convertHours(i);
-        time_slots.push(formatted_time);
+        timeSlots.push(formatted_time);
     }
-    return time_slots;
+    return timeSlots;
 }
 
 module.exports.convertInterval = (num) => {
@@ -44,7 +44,7 @@ module.exports.calFreeSlot = (appointmentDateDoctor, periodSlotDoctor, doctorId)
         let endTime = this.parseTime(data.end_time);
         let interval = this.convertInterval(periodSlotDoctor);
 
-        let timeSlot = this.calculate_time_slot( startTime, endTime, interval );
+        let timeSlot = this.calculateTimeSlot( startTime, endTime, interval );
         console.log("timeSlot: ", timeSlot)
      
         for (let j = 0; j < dateArr.length; j++) {

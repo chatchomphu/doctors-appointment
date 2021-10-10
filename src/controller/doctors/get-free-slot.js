@@ -21,9 +21,11 @@ const getFreeSlot = async(req, res) => {
         let timeSearch = serviceFunction.splitTimeSearch(req.query) ;
         console.log("timeSearch: ",timeSearch);
 
-        let query = {};
+        let query = {
+            is_reserved : false
+        };
         if ( reqParamId ) {
-            query = {'doctor_id': reqParamId} 
+            query['doctor_id'] = reqParamId;
         }
         if ( timeSearch.from && timeSearch.to ) {
             query["date"] = {

@@ -3,7 +3,7 @@ const mongoose = require('../mongodb');
 const AppointmentSchema = new mongoose.Schema({
   doctor_id: { type: String },
   patient_id: { type: Number, unique: true },
-  date: { type: String },
+  date: { type: Date },
   start_time: {type: String},
   end_time: {type: String},
   slot_id:  {type: String},
